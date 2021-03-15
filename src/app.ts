@@ -7,6 +7,8 @@ import Sequelize_stock from './models/product';
 //import { Model } from 'sequelize/types';
 import { Sequelize, Model, DataTypes } from 'sequelize';
 //import routerdb from './create_db';
+import * as bodyParser from 'body-parser';
+import cors from 'cors';
 
 class App {
   public app: Application;
@@ -27,6 +29,8 @@ class App {
     //TODO ggf. Inhalt aus routes hierhin schieben
     console.log('init Middleware...');
     this.app.use(routes);
+    this.app.use(express.json());
+    this.app.use(cors({origin: 'http://localhost:5000'}));
 
     //try {
     //  async() => await this.db_stock.authenticate();

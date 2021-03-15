@@ -22,3 +22,13 @@ const addToCart = (id) => {
     }
     //console.log('stored values', localStorage.getItem(CART_KEY));
 };
+
+const sendCart = function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://localhost:5000/cart', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.send(JSON.stringify({
+        cart: localStorage.getItem(CART_KEY)
+    }));
+};

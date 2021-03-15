@@ -3,18 +3,21 @@ import CartItem from './interface.cartitem';
 import Product from './interface.product';
 import * as bodyParser from 'body-parser';
 //localStorage = require('./../../public/js/main');
+//import * as bodyParser from 'body-parser';
 //Datenbank
 const stock_model: any = require('./../../models/index');
 const stock = stock_model.Stock;
 
+
+
 //console.log(window.localStorage.getItem('cart'));
-console.log(window.sessionStorage)
+//console.log(window.sessionStorage)
  
 class CartControls {
   public router = Router();
   public path = '/cart';
   private cartlist: CartItem[] = [];
-  //private altlist: any[] = [];
+  private altlist: any[] = [];
  
   constructor() {
     this.intializeRoutes();
@@ -22,24 +25,28 @@ class CartControls {
  
   public intializeRoutes() {
     this.router.get(this.path, this.getCartList);
-    //this.router.post('/cart/add', this.placeItemToCart);
+    this.router.post('/cart', this.placeItemToCart);
     //this.router.get('/selected/:id', this.placeItemToCart);
   }
  
 
   //gesamte Cart-Liste zurueckgeben
   getCartList = (req: Request, res: Response) => {
+
     //let id_list = localStorage.getItem('cart');
-    let id_list = window.sessionStorage.getItem('cart');
-    if (!id_list) {
-      console.log('nothing found yet.')
-    } else {
-      console.log(id_list);
-    }
-    res.render('cart');
+//    let id_list = window.sessionStorage.getItem('cart');
+//    if (!id_list) {
+//      console.log('nothing found yet.')
+//    } else {
+//      console.log(id_list);
+//    }
+//    res.render('cart');
   };
  
-  //placeItemToCart = (req: Request, res: Response) => {
+  placeItemToCart = (req: Request, res: Response) => {
+    console.log(req.body);
+    res.render('cart');
+  }
     //const selectedproduct: Product = req.params.id;
     //this.cartlist.push(selectedproduct);
 //    const selectedproduct: Product = stock.findById(req.params.id);

@@ -15,13 +15,13 @@ home.get(home_path, (req: Request, res: Response) => {
     })
   })
 
-//home.get('/selected/:id', (req: Request, res: Response) => {
-  //const id = parseInt(req.params.id);
-  //console.log(id);
-  //console.log(req.params.product_id);
-  //console.log("HI!!!");
-//  res.redirect('/');
-//});
+home.get('/selected/:id', (req: Request, res: Response) => {
+  const id = parseInt(req.params.id);
+  console.log(id);
+  console.log(req.params.product_id);
+  console.log("HI!!!");
+  res.redirect('/');
+});
 
 
 export default home;
