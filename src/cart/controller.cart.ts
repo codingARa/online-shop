@@ -2,8 +2,6 @@ import {Router, Response, Request} from 'express';
 import CartItem from './interface.cartitem';
 import Product from './interface.product';
 import * as bodyParser from 'body-parser';
-//const stock_db: any = require('../../models/index');
-//const stock_model: any = require('./../../models/stock');
 const stock_model: any = require('./../../models/index');
 const stock = stock_model.Stock;
  

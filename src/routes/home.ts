@@ -1,13 +1,23 @@
 import {Request, Response, Router} from 'express';
-//const db = require('../../models');
+const stock_model: any = require('./../../models/index');
+const stock = stock_model.Stock;
 const home: Router = Router();
-//const stock_db: any = require('../../models/index');
-//const stock_model: any = require('../../models/stock');
 
 const home_path: string[] = ['/', '/home']
 
 home.get(home_path, (req: Request, res: Response) => {
-  res.render('main');
+  //stock.findAll({plain: true, raw: true})
+  stock.findAll({raw: true})
+    .then((Stock: any) => {
+      res.render('main', {Stock})
+      console.log(Stock);
+      console.log(Stock.title);
+    })
+    //.then((Stock: any) => console.log(Stock))
+  })
+
+
+  //res.render('main');
 //    home.get('/', (req: Request, res: Response) => {
 //      return stock_db.Stocks.findAll()
 //        .then((product: any) => res.send(product))
@@ -16,6 +26,5 @@ home.get(home_path, (req: Request, res: Response) => {
 //          return res.send(err)
 //        });
 //    });
-});
 
 export default home;
