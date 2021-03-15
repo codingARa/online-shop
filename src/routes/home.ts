@@ -11,7 +11,6 @@ home.get(home_path, (req: Request, res: Response) => {
     .then((Stock: any) => {
       res.render('main', {Stock})
       console.log(Stock);
-      console.log(Stock.title);
     })
     //.then((Stock: any) => console.log(Stock))
   })
