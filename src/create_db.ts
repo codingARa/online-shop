@@ -1,11 +1,12 @@
+import { Router } from 'express';
 import { Sequelize, Model, DataTypes } from 'sequelize';
 
 const Sequelize_stock = new Sequelize({
   dialect: 'sqlite',
-  storage: '../database/stock.db'
+  storage: '../database/new_stock.db'
 });
 
-const stock = Sequelize_stock.define('init_datenbank', {
+const stock = Sequelize_stock.define('product', {
   // Model attributes are defined here
   product_id: {
     type: DataTypes.INTEGER,
@@ -37,24 +38,24 @@ const stock = Sequelize_stock.define('init_datenbank', {
   },
 }, {});
 
+const routerdb: Router = Router();
+routerdb.get('/add', (req, res) => {
+    const data = {
+        product_id: 1,
+        amount: 10,
+        title: 'Titel',
+        description: 'Awesome book',
+        author: "me",
+        isnb: '3-1234',
+        image: "img",
+        price: 9.99
+    }
 
-stock.sync().then(() => {console.log('table created')});
+    let {product_id, amount, title, description, author, isnb, image, price} = data;
 
-//const init = async () => {
-//  await Sequelize_stock.sync() // force true will drop the table if it already exists
-//  console.log('Tables have synced!')
-//}
-//init()
+    stock.create({product_id, amount, title, description, author, isnb, image, price})
+        .then(data => res.redirect('/'));
+});
 
-const findProducts = async () => {
-  try {
-    const allProdcuts = await stock.findAll()
-    console.log(',,,,,,,,,,,,,,,,,,,,,')
-    console.log(allProdcuts) //console.log allCampus, see what you get?
-  } catch (err) {
-    console.log(err)
-  }
-}
-findProducts() 
 
-export default Sequelize_stock;
+export default routerdb;

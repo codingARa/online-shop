@@ -2,6 +2,10 @@ import {Router, Response, Request} from 'express';
 import CartItem from './interface.cartitem';
 import Product from './interface.product';
 import * as bodyParser from 'body-parser';
+//const stock_db: any = require('../../models/index');
+//const stock_model: any = require('./../../models/stock');
+const stock_model: any = require('./../../models/index');
+const stock = stock_model.Stock;
  
 class CartControls {
   public router = Router();
@@ -14,14 +18,19 @@ class CartControls {
  
   public intializeRoutes() {
     this.router.get(this.path, this.getCartList);
-    this.router.post(this.path, this.placeItemToCart);
+    this.router.post('/cart/add', this.placeItemToCart);
+    this.router.get('/api', this.test);
   }
  
+  test = (req: Request, res: Response) => {
+    stock.findAll().then((Stock: any) => {res.json(Stock)})
+  };
+
   //gesamte Cart-Liste zurueckgeben
   getCartList = (req: Request, res: Response) => {
     //res.send(this.cartlist);
     res.render('cart');
-  }
+  };
  
   placeItemToCart = (req: Request, res: Response) => {
     //TODO: her muss ich noch das item aus dem body herausbekommen
