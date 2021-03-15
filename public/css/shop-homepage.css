@@ -255,8 +255,6 @@ input[type=text]:placeholder {
   width: 100%;
 }
 
-
-
 /* OTHERS */
 
 *:focus {
@@ -265,4 +263,9 @@ input[type=text]:placeholder {
 
 #icon {
   width:60%;
+}
+
+.img-thumbnail img {
+  max-height: 10px;
+  max-width: 10px;
 }
