@@ -2,13 +2,13 @@ import express, {Application, Request, Response, Router} from 'express';
 import routes from './routes';
 import exphbs from 'express-handlebars';
 import path from 'path';
-import Sequelize_stock from './models/product';
+//import Sequelize_stock from './models/product';
 //import stock  from './models/product';
 //import { Model } from 'sequelize/types';
-import { Sequelize, Model, DataTypes } from 'sequelize';
+//import { Sequelize, Model, DataTypes } from 'sequelize';
 //import routerdb from './create_db';
-import * as bodyParser from 'body-parser';
-import cors from 'cors';
+//import * as bodyParser from 'body-parser';
+//import cors from 'cors';
 
 class App {
   public app: Application;
@@ -26,26 +26,10 @@ class App {
   };
  
   private initializeMiddlewares() {
-    //TODO ggf. Inhalt aus routes hierhin schieben
     console.log('init Middleware...');
     this.app.use(routes);
-    this.app.use(express.json());
-    this.app.use(cors({origin: 'http://localhost:5000'}));
-
-    //try {
-    //  async() => await this.db_stock.authenticate();
-    //  console.log('...Test: Stock-Database connected');
-//      const stock = async() => {
-//        await Model.stock.sync({force: true})
-//        console.log("..Stock synchronisiert")
-//      };
-//      stock();
-//      this.stock.findAll()
-//        .then(products => console.log(products))
-//        .catch(err => console.log(err))
-    //} catch (error) {
-    //  console.error('...Unable to connect to the database:', error);
-    //}
+    //this.app.use(express.json());
+    //this.app.use(cors({origin: 'http://localhost:5000'}));
   };
 
   public initializeTemplateEngine() {
