@@ -1,3 +1,5 @@
+/* DEPRICATED
+  Interface-Class war geplant zum Typ-sicheren manipulieren des Shopping-Carts
 interface Product {
     product_id : number,
     title: string,
@@ -9,3 +11,4 @@ interface Product {
 };
 
 export default Product;
+*/

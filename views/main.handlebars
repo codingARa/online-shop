@@ -2,16 +2,13 @@
   {{#each Stock}}
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100">
-        <a href="/selected/{{id}}"><img class="card-img-top" src="./img/{{image}}" alt=""></a>
+        <a><img class="card-img-top" src="./img/{{image}}" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="/selected/{{id}}">{{title}}</a>
           </h4>
           <h5>{{price}} €</h5>
           <p class="card-text">{{description}}</p>
-          <!--
-          <button class="btn btn-primary" onclick="addToCart({{id}})">zum Warenkorb hinzufügen</button>
-          -->
           <a href="/selected/{{id}}" class="btn btn-primary">zum Warenkorb hinzufügen</a>
         </div>
       </div>

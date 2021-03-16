@@ -1,3 +1,5 @@
+/* DEPRICATED
+  Interface-Class war geplant zum Typ-sicheren manipulieren von User-Daten
 interface User {
     user_id : number,
     first_name: string,
@@ -7,3 +9,4 @@ interface User {
 };
 
 export default User;
+*/

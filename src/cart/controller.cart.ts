@@ -1,16 +1,15 @@
+/*
+Buendelung der Routes und Methoden zur Verwendung der Shopping-Cart-Seite
+*/
+
 import {Router, Response, Request} from 'express';
+//Verbindung mit Datenbank
 const stock_model: any = require('./../../models/index');
 const stock = stock_model.Stock;
-//import CartItem from './interface.cartitem';
-//import Product from './interface.product';
-//localStorage = require('./../../public/js/main');
-//import * as bodyParser from 'body-parser';
-//Datenbank
 
 class CartControls {
   public router = Router();
   public path = '/cart';
-  //private cartlist: CartItem[] = [];
   private altlist: any[] = [];
   private total: Number = 0;
  
@@ -18,6 +17,7 @@ class CartControls {
     this.intializeRoutes();
   }
  
+  //Routes definieren
   public intializeRoutes() {
     this.router.get(this.path, this.getCartList);
     this.router.get('/selected/:id', this.placeItemToCart);
@@ -25,7 +25,7 @@ class CartControls {
     this.router.get('/cart/checkout', this.checkout);
   }
  
-  //gesamte Cart-Liste zurueckgeben und anzeigen
+  //gesamte Cart-Liste zurueckgeben und anzeigen bei Besuch von Cart
   getCartList = (req: Request, res: Response) => {
    let unique_product_ids: any = this.altlist.filter((v, i, a) => a.indexOf(v) === i);
 
@@ -83,9 +83,7 @@ class CartControls {
     // - Cart loeschen, indem this.altlist = [] gesetzt wird
     console.log("Checkout");
     res.redirect('/');
-
   }
 }
-
  
 export default CartControls;

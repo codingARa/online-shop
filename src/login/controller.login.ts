@@ -1,3 +1,5 @@
+/* DEPRICATED
+  War fuer Verwaltung des User-Login geplant
 import {Router, Response, Request} from 'express';
 import User from './interface.user';
 import * as bodyParser from 'body-parser';
@@ -27,3 +29,4 @@ class LoginControls {
   }
  
 export default LoginControls;
+*/

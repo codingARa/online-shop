@@ -1,3 +1,7 @@
+/* DEPRICATED
+ DBStockController war inital zum Manipulieren der Datenbank gedacht. Hat sich
+ als Sackgasse/als unnoetig erwiesen
+
 import {Router, Request, Response}  from 'express';
 import Sequelize_stock from '../models/product';
 import product from '../models/product';
@@ -11,16 +15,9 @@ class DBStockController {
     this.establishConnection();
   };
 
-  //public intializeRoutes() {
-    //this.router.post(this.path, this.placeItemToCart);
-  //}
-
-  public displayAvailableStock(res: Response) {
-    //this.router.get(['/', '/home'], (req: Request, res: Response) => {
-      //console.log(this.product.showAllSchemas);
-      console.log("displayAvailable reached");
-      res.render('main');
-    //});
+  public displayAvailableStock(res: Response, req: Request) {
+    console.log("displayAvailable reached");
+    res.render('main');
   };
 
   private establishConnection() {
@@ -34,3 +31,5 @@ class DBStockController {
 };
 
 export default DBStockController;
+
+*/

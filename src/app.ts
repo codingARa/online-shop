@@ -1,20 +1,17 @@
+/*
+zentrale App-Class:
+- wird von server.ts instanziiert
+- loopt ueber alle Controller-Classes, um deren Methoden zu nutzen
+*/
+
 import express, {Application, Request, Response, Router} from 'express';
 import routes from './routes';
 import exphbs from 'express-handlebars';
 import path from 'path';
-//import Sequelize_stock from './models/product';
-//import stock  from './models/product';
-//import { Model } from 'sequelize/types';
-//import { Sequelize, Model, DataTypes } from 'sequelize';
-//import routerdb from './create_db';
-//import * as bodyParser from 'body-parser';
-//import cors from 'cors';
 
 class App {
   public app: Application;
   public port: number;
-  //private db_stock = Sequelize_stock;
-  //public stock: Model;
  
   constructor(controllers: any, port: number) {
     this.app = express();
@@ -26,32 +23,34 @@ class App {
   };
  
   private initializeMiddlewares() {
-    console.log('init Middleware...');
+    //mit initialer Route
     this.app.use(routes);
-    //this.app.use(express.json());
-    //this.app.use(cors({origin: 'http://localhost:5000'}));
   };
 
+  //handlebar als Template-Engine angeben & konfigurieren
   public initializeTemplateEngine() {
     this.app.set('view engine', 'handlebars');
+
     this.app.engine(
       'handlebars',
       exphbs({
         defaultLayout: 'main',
         layoutsDir: path.join(__dirname, '../views/layouts')
       }));
+
     const csspath: string = path.join(__dirname, '../public');
     this.app.use(express.static(csspath));
-    //this.app.get('/', (req: Request, res: Response) => {res.render('main')});
-    console.log("Test: template engine initilized");
   };
  
+  //Loop ueber alle Controller-Classes, um dort definierte Methoden verwenden
+  //zu koennen
   private initializeControllers(controllers: any) {
     controllers.forEach((controller: any) => {
       this.app.use('/', controller.router);
     });
   };
- 
+
+  //zentrale Methode fuer Server
   public listen() {
     this.app.listen(this.port, () => {
       console.log(`App listening on the port ${this.port}`);
