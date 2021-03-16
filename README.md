@@ -4,6 +4,7 @@
 - eigener Fokus lag auf saubere Implementierung, d.h.
     - modularer Aufbau und Umsetzung des Modell/View/Controller-Muster
     - Typ-sicheres Datenhandling über Typ-Skript
+- zudem wollte ich mich an der für mich neuen Sprache/neuen Framwork Typescript/ExpressJS versuchen
 
 ## Beschreibung grundlegende Struktur
 - */src/server.ts*: Startpunkt der Server-Seite zur Instanziierung der App-Class und Übergabe der Controller-Classes
@@ -26,7 +27,7 @@
 
 ## verwendete Pakete & angewendete Methoden
 - Modell/View/Controller-Muster
-- Express JS
+- ExpressJS
 - Typescript
 - ORM: Sequelize
 - Datenbank: sqlite3
